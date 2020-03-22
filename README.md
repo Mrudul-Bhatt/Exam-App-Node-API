@@ -9,4 +9,4 @@ run NPM START to establish a connection to database and the server
 
 Use any application which deals with API's front end ex: postman, insomnia to implement CRUD operations 
 
-NOTE -> Use your own mongolink if want to connect to your personel database , by replacing the link in .env folder
+NOTE -> Use your own mongolink , if you want to connect to your personel database , by replacing the link in .env folder
