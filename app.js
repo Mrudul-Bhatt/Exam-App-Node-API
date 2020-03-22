@@ -3,17 +3,22 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-
-
 const app = express();
 
+//Middlewares
+
+app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+//Import Routes
 const feedRoutes = require('./routes/questions');
+
+//Use routes
 
 app.use('/questions', feedRoutes);
 
+//Database connection
 
 mongoose.connect(
     process.env.DB_Connection,
@@ -21,6 +26,8 @@ mongoose.connect(
     )
     .then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err));
+
+//Server connection    
 
 const PORT = process.env.PORT || 4040;        
 
