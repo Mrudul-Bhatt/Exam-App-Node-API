@@ -3,20 +3,24 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+
+
 const app = express();
 
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
+const feedRoutes = require('./routes/questions');
+
+app.use('/questions', feedRoutes);
 
 
 mongoose.connect(
     process.env.DB_Connection,
-    { useNewUrlParser: true, useUnifiedTopology: true}
+    { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}
     )
     .then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err));
-
-
-app.use('/', require('./routes/feed'));
-
 
 const PORT = process.env.PORT || 4040;        
 

@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
 const Question = new mongoose.Schema({
+    
+    id: {
+      type: Number,
+      required: true
+    
+    },
     question: {
       type: String,
       required: true
@@ -9,14 +15,15 @@ const Question = new mongoose.Schema({
     correct:{ 
       type: String,
       required: true
+    },
+    date: {
+      type: Date,
+      default: Date.now
     }
-
-
 });
 
-const Question = mongoose.model('Question', Question);
 
-module.exports = Question;
+module.exports = mongoose.model('Question', Question);;
 
 
 
