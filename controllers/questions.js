@@ -38,7 +38,7 @@ exports.deleteQuestion_ObjectId = (req, res) => {
 };
 
 exports.deleteQuestion_questionId = (req, res) => {
-    Questions.findOneAndRemove({ id: req.params.postId })
+    Questions.findOneAndRemove({ questionId: req.params.postId })
         .then(data => res.status(200).json({ message: "Question deleted successfully" }))
         .catch(err => res.status(400).json(err));
 };
@@ -48,18 +48,18 @@ exports.updateQuestion_ObjectId = (req, res) => {
         question: req.body.question,
         answers: req.body.answers,
         correct: req.body.correct,
-        id: req.body.id
+        questionId: req.body.questionId
     })
         .then(data => res.status(200).json({ message: "Question updated successfully" }))
         .catch(err => res.status(400).json(err));
 };
 
 exports.updateQuestion_questionId = (req, res) => {
-    Questions.findOneAndUpdate({ id: req.params.postId }, {
+    Questions.findOneAndUpdate({ questionId: req.params.postId }, {
         question: req.body.question,
         answers: req.body.answers,
         correct: req.body.correct,
-        id: req.body.id
+        questionId: req.body.questionId
     })
         .then(data => res.status(200).json({ message: "Question updated successfully" }))
         .catch(err => res.status(400).json(err));
